@@ -7,6 +7,7 @@ with/without text.
 
 - bash
 - imagemagick
+- grid-aligned, rectangular images in one combined image
 
 # Usage
 
