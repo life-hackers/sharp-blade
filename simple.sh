@@ -15,6 +15,8 @@ fi
 
 list=`convert "$input" \
     -colorspace gray -negate -threshold 15%          \
+		-morphology Erode:1 Octagon \
+		-morphology Close Disk   \
     -define connected-components:verbose=true        \
     -define connected-components:area-threshold=200  \
     -connected-components 8 null:`
