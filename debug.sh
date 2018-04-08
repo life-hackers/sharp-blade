@@ -19,13 +19,13 @@ out_fn=`convert -ping "$input" -format "%t" info:`
 
 list=`convert "$input" \
     -colorspace gray -negate -threshold 15%          \
-		sample.png
-		# -morphology Erode:1 Octagon \
-		# -morphology Close Disk   \
+    sample.png
+    # -morphology Erode:1 Octagon \
+    # -morphology Close Disk   \
     # -define connected-components:verbose=true        \
     # -define connected-components:area-threshold=100  \
     # -connected-components 8 null:`
-		# debug.png`
+    # debug.png`
 
 echo "$list"
 

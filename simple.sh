@@ -15,8 +15,8 @@ fi
 
 list=`convert "$input" \
     -colorspace gray -negate -threshold 15%          \
-		-morphology Erode:1 Octagon \
-		-morphology Close Disk   \
+    -morphology Erode:1 Octagon \
+    -morphology Close Disk   \
     -define connected-components:verbose=true        \
     -define connected-components:area-threshold=200  \
     -connected-components 8 null:`
@@ -28,19 +28,19 @@ IFS=$'\n'
 mkdir $out_dir
 inx=0
 for item in $list; do
-	# trim https://stackoverflow.com/a/12973694/3672225
+  # trim https://stackoverflow.com/a/12973694/3672225
   item=`echo $item | xargs`
-	# get vars
+  # get vars
   bbox=`echo ${item} | cut -d\  -f2`
   color=`echo ${item} | cut -d\  -f5`
   # echo "color=$color; bbox=$bbox"
   
   if [ "$color" == "srgb(255,255,255)" ]; then
-		fn=$out_dir/${out_fn}_${inx}.png
-		echo cropping to $fn
+    fn=$out_dir/${out_fn}_${inx}.png
+    echo cropping to $fn
     convert $input -crop $bbox +repage \
-					-trim +repage $fn
-		inx=$((inx + 1))
+          -trim +repage $fn
+    inx=$((inx + 1))
   fi
 done
 
